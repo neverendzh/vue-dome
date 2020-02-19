@@ -1,23 +1,79 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    redirect: "login",
+    hidden: true,
+    mate: {
+      name: "登陆"
+    }
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/login",
+    name: "login",
+    hidden: true,
+    mate: {
+      name: "登陆页"
+    },
+    component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/console",
+    name: "console",
+    redirect: "index",
+    mate: {
+      name: "操作台",
+      icon:"el-icon-more"
+    },
+    component: () => import("../views/layout/index.vue"),
+    children: [
+      {
+        path: "/index",
+        name: "index",
+        mate: {
+          name: "个人信息"
+        },
+        component: () => import("../views/console/index.vue")
+      },{
+        path: "/account",
+        name: "account",
+        mate: {
+          name: "用户管理"
+        },
+        component: () => import("../views/account/accountcrm.vue")
+      }
+    ]
+  },
+    {
+    path: "/console",
+    name: "console",
+    redirect: "index",
+    mate: {
+      name: "操作台",
+      icon:"el-icon-more"
+    },
+    component: () => import("../views/layout/index.vue"),
+    children: [
+      {
+        path: "/index",
+        name: "index",
+        mate: {
+          name: "个人信息"
+        },
+        component: () => import("../views/console/index.vue")
+      },{
+        path: "/account",
+        name: "account",
+        mate: {
+          name: "用户管理"
+        },
+        component: () => import("../views/account/accountcrm.vue")
+      }
+    ]
   }
 ];
 

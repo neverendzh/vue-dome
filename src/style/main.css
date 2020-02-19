@@ -1,0 +1,12 @@
+.el-submenu .el-menu-item.is-active {
+  background-color: #009688 !important;
+}
+
+.el-menu-item.is-active {
+  color: white !important;
+}
+
+body {
+  background-color: white;
+}
+/*# sourceMappingURL=main.css.map */
